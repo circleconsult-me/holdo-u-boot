@@ -341,8 +341,8 @@ config TARGET_HAILO10_M2_DEVEL
 	select MACH_HAILO10
 
 config TARGET_HOLDO_HAILO15
-	bool "Custom Hailo15 - Holdo"
-	select MACH_HAILO15
+    bool "Custom Hailo15 - Holdo"
+    select MACH_HAILO15
 
 source "board/hailo/hailo15-vp/Kconfig"
 source "board/hailo/hailo15-ginger-soc/Kconfig"
