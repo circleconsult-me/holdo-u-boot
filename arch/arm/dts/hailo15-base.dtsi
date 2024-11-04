@@ -1,0 +1,63 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * dts file for Hailo Hailo15 SoC
+ *
+ * Copyright (c) 2019-2024 Hailo Technologies Ltd. All rights reserved.
+ */
+
+#define HAILO_SOC_TYPE HAILO_SOC_HAILO15
+#include "hailo15-family-base.dtsi"
+
+/ {
+    pl320_mbox: mailbox@0 {
+        reg = <0 0x78002000 0 0x1000>;
+    };
+
+    qspi: qspi@10c000 {
+        compatible = "cdns,qspi-nor";
+        #address-cells = <1>;
+        #size-cells = <0>;
+        reg = <0x00000000 0x0010c000 0x00000000 0x1000>,
+                <0x00000000 0x70000000 0x00000000 0x08000000>;
+        clocks = <&scmi_clk HAILO15_SCMI_CLOCK_IDX_HCLK>;
+
+        cdns,fifo-depth = <256>;
+        cdns,fifo-width = <4>;
+        cdns,trigger-address = <0>;
+        cdns,is-decoded-cs = <0>;
+
+        status = "okay";
+
+        u-boot,dm-spl;
+
+        spi0_flash0: flash@0 {
+            #address-cells = <1>;
+            #size-cells = <1>;
+            compatible = "jedec,spi-nor";
+            spi-max-frequency = <6250000>; /* 90Mhz in DTR, 166Mhz in STR */
+            reg = <0>;		/* chip select */
+
+            u-boot,dm-spl;
+        };
+    };
+
+    i2c_0: i2c@104000 {
+        clocks = <&scmi_clk HAILO15_SCMI_CLOCK_IDX_HCLK>;
+    };
+
+    i2c_1: i2c@105000 {
+        clocks = <&scmi_clk HAILO15_SCMI_CLOCK_IDX_HCLK>;
+    };
+
+    i2c_2: i2c@106000 {
+        clocks = <&scmi_clk HAILO15_SCMI_CLOCK_IDX_HCLK>;
+    };
+
+    i2c_3: i2c@107000 {
+        clocks = <&scmi_clk HAILO15_SCMI_CLOCK_IDX_HCLK>;
+    };
+
+    aliases {
+        spi0 = &qspi;
+    };
+};

@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * dts file for Hailo15 SoC
+ *
+ * Copyright (c) 2019-2024 Hailo Technologies Ltd. All rights reserved.
+ */
+
+#include "hailo15l-base.dtsi"
+#include "hailo15_ddr_configuration.dtsi"
+#include "hailo15_ddr_veloce_regconfig.dtsi"
+
+&sdio0 {
+    status = "okay";
+};
+
+&macb {
+    status = "okay";
+    hailo,tx-clock-delay = <3>;
+    hailo,rx-clock-delay = <3>;
+    fixed-link {
+        speed = <1000>;
+        full-duplex;
+    };
+};

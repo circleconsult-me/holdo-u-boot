@@ -1,0 +1,12 @@
+if TARGET_HOLDO_HAILO15
+
+config SYS_BOARD
+    default "holdo-hailo15"
+
+config SYS_VENDOR
+    default "hailo"
+
+config SYS_CONFIG_NAME
+    default "holdo-hailo15"
+
+endif

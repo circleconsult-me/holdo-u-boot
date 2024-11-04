@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * dts file for Hailo15 oregano SoC
+ *
+ * Copyright (c) 2019-2024 Hailo Technologies Ltd. All rights reserved.
+ */
+
+#include "hailo15l-base.dtsi"
+#include "hailo15_ddr_configuration.dtsi"
+#include "hailo15_ddr_MT53E512M32D1-046_regconfig_2GB.dtsi" // 2GB ddr
+
+&sdio0 {
+    status = "okay";
+    sdhci-caps = <0 0x01000000>; // Force VOLT33 capability
+    bus-width = <4>;
+
+    phy-config {
+            card-is-emmc = <0x0>;
+            cmd-pad-values = <0x1 0x3 0x1 0x1>; // txslew_ctrl_n, txslew_ctrl_p, weakpull_enable, rxsel
+            dat-pad-values = <0x1 0x3 0x1 0x1>; // txslew_ctrl_n, txslew_ctrl_p, weakpull_enable, rxsel
+            rst-pad-values = <0x1 0x3 0x1 0x1>; // txslew_ctrl_n, txslew_ctrl_p, weakpull_enable, rxsel
+            clk-pad-values = <0x1 0x3 0x0 0x1>; // txslew_ctrl_n, txslew_ctrl_p, weakpull_enable, rxsel
+            sdclkdl-cnfg = <0x1 0x7F>; //extdly_en, cckdl_dc
+            drive-strength = <0x9 0x8>; //pad_sp, pad_sn
+            u-boot,dm-spl;
+    };
+};
+
+&macb {
+    status = "okay";
+    phy-mode = "gmii";
+};
+
+&hailo_boot_info {
+	ddr_config {
+		bist_enable = <0>;
+	};
+};
