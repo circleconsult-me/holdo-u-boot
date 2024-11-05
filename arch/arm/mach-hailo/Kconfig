@@ -336,6 +336,10 @@ config TARGET_HAILO10_M2
 	bool "Hailo10 M.2"
 	select MACH_HAILO10
 
+config TARGET_HOLDO_HAILO15
+	bool "Holdo hailo board"
+	select MACH_HAILO15
+
 config TARGET_HAILO10_M2_DEVEL
 	bool "Hailo10 M.2 development"
 	select MACH_HAILO10
@@ -353,6 +357,7 @@ source "board/hailo/hailo15l-oregano/Kconfig"
 source "board/hailo/hailo15l-evb/Kconfig"
 source "board/hailo/hailo15l-sbc/Kconfig"
 source "board/hailo/hailo10-m2/Kconfig"
+source "board/hailo/holdo-hailo15/Kconfig"
 source "board/hailo/hailo10-m2-devel/Kconfig"
 
 endif
