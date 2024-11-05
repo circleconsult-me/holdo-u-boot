@@ -5,8 +5,6 @@
  * Copyright (c) 2019-2023 Hailo Technologies Ltd. All rights reserved.
  */
 
-//# The start of this is the copy of "hailo15-sbc.dts"
-
 #include "hailo15-base.dtsi"
 #include "hailo15_ddr_configuration.dtsi"
 //#include "hailo15_ddr_MT53E512M32D1-046_regconfig_2GB.dtsi"
